@@ -5,8 +5,8 @@ stages:
     deps:
     - path: src/download.py
       hash: md5
-      md5: 485bee705915dfc841119ab38770ae28
-      size: 1243
+      md5: 64e2447a073cb181e925ce8a80cabe75
+      size: 1244
     params:
       params.yaml:
         data.raw: data/raw/bank-additional-full.csv
@@ -22,16 +22,16 @@ stages:
     deps:
     - path: data/production/labelled.csv
       hash: md5
-      md5: 55f679f06c3ba5e8d052adb456fe7a3c
-      size: 193
+      md5: ba342cd162e0037d0ddf5353d847b784
+      size: 549853
     - path: data/raw/bank-additional-full.csv
       hash: md5
       md5: f6cb2c1256ffe2836b36df321f46e92c
       size: 5834924
     - path: src/data.py
       hash: md5
-      md5: b9c497659c20710e1feaf337b4fcc513
-      size: 4681
+      md5: 50972843ff1f7e609353b87a3d39783a
+      size: 4682
     params:
       params.yaml:
         data:
@@ -59,27 +59,27 @@ stages:
     outs:
     - path: data/processed/eval.csv
       hash: md5
-      md5: 20906f1ff0c994de345fece64dd975b3
-      size: 757811
+      md5: 45e85dffd7f3e130635cc6c2171500d7
+      size: 102323
     - path: data/processed/future.csv
       hash: md5
       md5: 2e99627329a03c5465693d96808dcb91
       size: 927965
     - path: data/processed/train.csv
       hash: md5
-      md5: 565398a9fccf4c59c373205e31057601
-      size: 3025231
+      md5: 6326fa103a9a3f6aa2d46022c387a65d
+      size: 4020379
   train:
     cmd: uv run python -m src.train
     deps:
     - path: data/processed/train.csv
       hash: md5
-      md5: 565398a9fccf4c59c373205e31057601
-      size: 3025231
+      md5: 6326fa103a9a3f6aa2d46022c387a65d
+      size: 4020379
     - path: src/train.py
       hash: md5
-      md5: 601b98b366496a79271cf1c98c2fb8a5
-      size: 2282
+      md5: 4e64a2b11be045adad37da9012176863
+      size: 2283
     params:
       params.yaml:
         model:
@@ -104,40 +104,40 @@ stages:
     outs:
     - path: models/model.cbm
       hash: md5
-      md5: 4355ca18d2abe41b7f604c6050c83db8
-      size: 725360
+      md5: 74eab423066080a635c2c9921e2a7910
+      size: 689456
     - path: run_info.json
       hash: md5
-      md5: 8765cd3ef8dd531b05e548cb36ec8e2b
+      md5: ebf09c16e6f6a93003b6a0b8bbf6c7d9
       size: 112
   evaluate:
     cmd: uv run python -m src.evaluate
     deps:
     - path: data/processed/eval.csv
       hash: md5
-      md5: 20906f1ff0c994de345fece64dd975b3
-      size: 757811
+      md5: 45e85dffd7f3e130635cc6c2171500d7
+      size: 102323
     - path: models/model.cbm
       hash: md5
-      md5: 4355ca18d2abe41b7f604c6050c83db8
-      size: 725360
+      md5: 74eab423066080a635c2c9921e2a7910
+      size: 689456
     - path: src/evaluate.py
       hash: md5
-      md5: 5cf320daffa5c5b92b3d9aa5fda38195
-      size: 1833
+      md5: 86fcd7b8f24c2c19285077180c6a50b2
+      size: 1834
     - path: src/metrics.py
       hash: md5
-      md5: 680be0f4b2b5d93444f0741ae6d85c8a
-      size: 847
+      md5: 6109caa6dc2ee415734a340ba8eddea8
+      size: 848
     params:
       params.yaml:
         evaluate.top_k_fraction: 0.2
     outs:
     - path: eval_metrics.json
       hash: md5
-      md5: 10ad2c3e1824163d583b3058553f152e
+      md5: ab25555ba9d35c1857782e4694dfa938
       size: 209
     - path: plots/shap_summary.png
       hash: md5
-      md5: 55722a00ca2efca333b77abeb0325c43
-      size: 76275
+      md5: 37ae0009a081d9750b8f449d021b12f9
+      size: 85099
